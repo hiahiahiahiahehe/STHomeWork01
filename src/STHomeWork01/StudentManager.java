@@ -6,30 +6,32 @@ import STHomeWork01.Student;
 public class StudentManager {
 	public static void app(List<Student> StudentList) {
 		System.out.println("************************************************************");
-		System.out.println("*                            1.插入                        *");
-		System.out.println("*                            2.查找                        *");
-		System.out.println("*                            3.删除                        *");
-		System.out.println("*                            4.修改                        *");
-		System.out.println("*                            5.输出                        *");
-		System.out.println("*                            6.退出                        *");
+		System.out.println("*                            1.插入                                           *");
+		System.out.println("*                            2.查找                                           *");
+		System.out.println("*                            3.删除                                           *");
+		System.out.println("*                            4.修改                                           *");
+		System.out.println("*                            5.输出                                           *");
+		System.out.println("*                            6.退出                                           *");
 		System.out.println("************************************************************");
 		System.out.println("请选择操作：");
 		Scanner sc = new Scanner(System.in);
 		int choice = sc.nextInt();
+		
 		switch(choice) {
-		//insert student
+		
+		
+		//5、插入学生信息
 		case 1:
-
 			System.out.println("请输入学生的学号：");
 			Scanner Sid = new Scanner(System.in);
 			String studentID = Sid.nextLine();
-			boolean isfind1 = true;
+			boolean isfind1 = true;          //7、判断将插入的学生信息是否已存在
+			//30
 			if(StudentList.size()==20) {
 				System.out.println("学生人数已满，无法插入信息");
 				isfind1 = false;
 			}
 			
-
 			for(int i=0;i<StudentList.size();i++) {
 				if(studentID.equals(StudentList.get(i).getStudentID())) {
 					System.out.println("该学生信息已存在");
@@ -59,12 +61,12 @@ public class StudentManager {
 	        break;
             
         
-        //check student
+        //5、查找学生信息
 		case 2:
 			System.out.println("请输入需要查询信息的学生学号：");
             Scanner chId = new Scanner(System.in);
             String checkID = chId.nextLine();
-            boolean isfind2 = false;
+            boolean isfind2 = false;     //7、判断学生信息是否能查找到
             for(int i=0;i<StudentList.size();i++) {
             	if(checkID.equals(StudentList.get(i).getStudentID())) {
             		System.out.println("学号："+StudentList.get(i).getStudentID());
@@ -81,12 +83,12 @@ public class StudentManager {
             app(StudentList);
 			break;
     
-        //delate student
+        //5、删除学生信息
 		case 3:
             System.out.println("请输入需要删除信息的学生学号：");
             Scanner deID = new Scanner(System.in);
 			String delateID = deID.nextLine();		
-            boolean isfind3 = false;
+            boolean isfind3 = false;        //7、判断将删除的学生信息是否存在
 			for(int i=0;i<StudentList.size();i++) {
 				if(delateID.equals(StudentList.get(i).getStudentID())) {
 					StudentList.remove(i);			
@@ -101,12 +103,12 @@ public class StudentManager {
 			app(StudentList);
 			break;
 		
-		//update student
+		//5、修改学生信息
 		case 4:
 			System.out.println("请输入需要修改信息的学生学号：");
 			Scanner upID = new Scanner(System.in);
 			String updateID = upID.nextLine();
-			boolean isfind4 = false;
+			boolean isfind4 = false;     // 7、判断将修改的学生信息是否存在
 			for(int i=0;i<StudentList.size();i++) {
 				if(updateID.equals(StudentList.get(i).getStudentID())) {
 					System.out.println("该学生原信息为：");
@@ -147,7 +149,9 @@ public class StudentManager {
 			
 			app(StudentList);
 			break;
-		//check all students
+			
+			
+		//5、输出所有学生信息
 		case 5:
 			if(StudentList.size()>0) {
 				for(int i=0;i<StudentList.size();i++) {
@@ -158,10 +162,15 @@ public class StudentManager {
 			app(StudentList);
 			break;
 			
+		//5、退出程序
 		case 6:
 			app(StudentList);
 			System.out.println("已退出");
 			break;
+			
+		default:           //37
+			System.out.println("请输入1~6");
+			app(StudentList);
 		}
 	}
 
